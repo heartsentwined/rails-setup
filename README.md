@@ -91,7 +91,7 @@ group :test do
 end
 ```
 
-Add Ember environment config. In `config/environments`:
+Run `bundle install`.
 
 Add to `development.rb` and `test.rb`:
 
