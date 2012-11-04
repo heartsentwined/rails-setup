@@ -102,6 +102,10 @@ In `spec/spec_helper.rb`:
 
 Comment out
 ```rb
+  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+```
+and
+```rb
   config.use_transactional_fixtures = true
 ```
 
