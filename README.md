@@ -93,6 +93,10 @@ end
 
 Run `bundle install`.
 
+## Ember environment configs
+
+In `config/environments`:
+
 Add to `development.rb` and `test.rb`:
 
 ```rb
