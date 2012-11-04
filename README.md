@@ -120,13 +120,13 @@ In `config/environments`:
 Add to `development.rb` and `test.rb`:
 
 ```rb
-config.ember.variant = :development
+  config.ember.variant = :development
 ```
 
 And this for `production.rb`:
 
 ```rb
-config.ember.variant = :production
+  config.ember.variant = :production
 ```
 
 ## Configure SASS / Bourbon
