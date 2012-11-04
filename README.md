@@ -166,3 +166,4 @@ guard
 * Twitter Bootstrap
 * Guard
 * Spork
+* Make an index page, index controller, etc, that loads ember app
