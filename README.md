@@ -129,6 +129,12 @@ And this for `production.rb`:
   config.ember.variant = :production
 ```
 
+## Ember directory structure bootstrap
+
+```sh
+rails generate ember:bootstrap
+```
+
 ## Configure SASS / Bourbon
 
 Rename `app/assets/stylesheets/application.css` to `application.css.sass`.
@@ -140,4 +146,23 @@ Use `@import` directives instead of `Sprocket`'s `require` lines:
 * Add `@import 'bourbon'` at the top
 * Add `@import 'custom'` after that
 
-## Todo: Twitter Bootstrap?
+## Start everything
+
+Remove `public/index.html`
+
+Start rails server.
+
+```sh
+rails server
+```
+
+Start Guard.
+```sh
+guard
+```
+
+## Todo
+
+* Twitter Bootstrap
+* Guard
+* Spork
