@@ -2,15 +2,19 @@ A reminder file to a rails-convert (me!):
 to-do list of getting a rails app running,
 with all my preferred tools.
 
+Should be invaluable for a one-year-later-self too.
+
 # The list
 
-Install rails
+## Install rails
 
 ```sh
 gem install rails
 ```
 
-Use datamapper, and generate a new rails project. Use [dm-rails](https://github.com/datamapper/dm-rails) integration.
+## Datamapper and generate new rails project
+
+Use [dm-rails](https://github.com/datamapper/dm-rails) integration.
 **Warning: possible man-in-the-middle attack!**
 But it's the best bootstrap for now...
 
@@ -18,7 +22,7 @@ But it's the best bootstrap for now...
 rails new project_name -m http://datamapper.org/templates/rails.rb
 ```
 
-Add gems to `Gemfile`. Includes:
+## Add gems
 
 * Client-side / views
     * Ember.js
@@ -35,6 +39,8 @@ Add gems to `Gemfile`. Includes:
     * Factory girls
 * Misc
     * BCrypt
+
+Add to `Gemfile`:
 
 ```rb
 gem 'bcrypt-ruby',    '~> 3.0.1'
