@@ -11,7 +11,7 @@ gem install rails
 ```
 
 Use datamapper, and generate a new rails project. Use [dm-rails](https://github.com/datamapper/dm-rails) integration.
-*Warning: possible man-in-the-middle attack!*
+**Warning: possible man-in-the-middle attack!**
 But it's the best bootstrap for now...
 
 ```sh
@@ -36,7 +36,7 @@ Add gems to `Gemfile`. Includes:
 * Misc
     * BCrypt
 
-```
+```rb
 gem 'bcrypt-ruby',    '~> 3.0.1'
 
 gem 'jquery-rails',   '~> 2.1.3'
