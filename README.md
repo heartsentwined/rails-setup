@@ -128,3 +128,16 @@ And this for `production.rb`:
 ```rb
 config.ember.variant = :production
 ```
+
+## Configure SASS / Bourbon
+
+Rename `app/assets/stylesheets/application.css` to `application.css.sass`.
+
+Create `app/assets/stylesheets/custom.css.sass` as a starting point for app's css.
+
+Use `@import` directives instead of `Sprocket`'s `require` lines:
+* Remove `*= require_tree`
+* Add `@import 'bourbon'` at the top
+* Add `@import 'custom'` after that
+
+## Todo: Twitter Bootstrap?
