@@ -40,7 +40,7 @@ Add gems to `Gemfile`. Includes:
 gem 'bcrypt-ruby',    '~> 3.0.1'
 
 gem 'jquery-rails',   '~> 2.1.3'
-gem 'ember-rails',    '0.8.0'
+gem 'ember-rails',    '~> 0.8.0'
 
 gem 'will_paginate',  '~> 3.0.3'
 gem 'bootstrap-sass', '~> 2.1.1.0'
@@ -83,4 +83,18 @@ group :test do
   # Pretty printed test output
   gem 'turn',                  '~> 0.9.4', :require => false
 end
+```
+
+Add Ember environment config. In `config/environments`:
+
+Add to `development.rb` and `test.rb`:
+
+```rb
+config.ember.variant = :development
+```
+
+And this for `production.rb`:
+
+```rb
+config.ember.variant = :production
 ```
