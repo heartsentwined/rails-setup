@@ -12,6 +12,15 @@ Should be invaluable for a one-year-later-self too.
 gem install rails
 ```
 
+## System dependencies
+
+* Database drivers
+* Phantomjs
+
+```sh
+sudo apt-get install libsqlite3-dev libmysqlclient-dev libpq-dev phantomjs
+```
+
 ## Datamapper and generate new rails project
 
 Use [dm-rails](https://github.com/datamapper/dm-rails) integration.
