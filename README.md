@@ -1,24 +1,47 @@
-A reminder file to a rails-convert (me!):
-to-do list of getting a rails app running,
-with all my preferred tools.
+A reminder to-do list of getting a rails app running,
+with a bunch of useful tools.
 
-Should be invaluable for a one-year-later-self too.
+Based on [][http://ryanbigg.com/2010/12/ubuntu-ruby-rvm-rails-and-you/],
+with added customizations
 
 # The list
 
-## Install rails
+## System dependencies
+
+* Curl
+* Database drivers
+* Phantomjs
+* ...
+
+```sh
+sudo apt-get install curl libsqlite3-dev libmysqlclient-dev libpq-dev \
+build-essential openssl libreadline6 libreadline6-dev \
+git-core zlib1g zlib1g-dev libssl-dev libyaml-dev libsqlite3-dev sqlite3 \
+libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison \
+subversion pkgconfig phantomjs
+```
+
+## Ruby Version Manager
+
+Install RVM
+```sh
+curl -L get.rvm.io | bash -s stable --auto
+```
+and reload Bash profile
+```sh
+. ~/.bash_profile
+```
+
+## Install Ruby
+
+```sh
+rvm install 1.9.3 && rvm use 1.9.3
+```
+
+## Install Rails
 
 ```sh
 gem install rails
-```
-
-## System dependencies
-
-* Database drivers
-* Phantomjs
-
-```sh
-sudo apt-get install libsqlite3-dev libmysqlclient-dev libpq-dev phantomjs
 ```
 
 ## Datamapper and generate new rails project
