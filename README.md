@@ -118,6 +118,7 @@ group :development, :test do
   gem 'guard-spork',      '~> 1.2.3'
   gem 'spork',            '~> 0.9.2'
   gem 'database_cleaner', '~> 0.9.1'
+  gem 'email_spec',       '~> 1.4.0'
 end
 
 group :test do
@@ -165,7 +166,11 @@ Use `@import` directives instead of `Sprocket`'s `require` lines:
 * Add `@import 'bourbon'` at the top
 * Add `@import 'custom'` after that
 
-## Rspec support, with DatabaseCleaner
+## Rspec
+
+With:
+* DatabaseCleaner
+* email matchers
 
 Integrate rspec support for datamapper.
 
@@ -184,7 +189,18 @@ and
   config.use_transactional_fixtures = true
 ```
 
-Add at bottom of `RSpec.configure` block
+Add to the top require lines:
+```rb
+require 'email_spec'
+```
+
+Add at the top of `RSpec.configure` block:
+```rb
+  config.include EmailSpec::Helpers
+  config.include EmailSpec::Matchers
+```
+
+Add at the bottom of `RSpec.configure` block:
 ```rb
   config.before(:suite) { DataMapper.auto_migrate! }
 
