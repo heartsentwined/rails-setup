@@ -242,6 +242,8 @@ guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAIL
 end
 ```
 
+Remove `test/`. (Otherwise, Spork will attempt to load `Test::Unit`, and fail.)
+
 ## Start everything
 
 Remove `public/index.html`
