@@ -39,6 +39,12 @@ and reload Bash profile
 rvm install 1.9.3 && rvm use 1.9.3
 ```
 
+## Setup app gemset
+
+```sh
+rvm gemset create project-name && rvm gemset use project-name
+```
+
 ## Install Rails
 
 ```sh
@@ -63,6 +69,7 @@ rails new project_name -m http://datamapper.org/templates/rails.rb
     * SASS
         * Bourbon mixin pack
     * Haml
+        * Maruku
     * pagination
 * Testing
     * RSpec
@@ -92,6 +99,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.2'
   gem 'bourbon',      '~> 2.1.2'
   gem 'haml',         '~> 3.1.7'
+  gem 'maruku',       '~> 0.6.1'
   gem 'uglifier',     '~> 1.2.4'
 end
 
@@ -105,10 +113,11 @@ end
 # gem 'ruby-debug19', '~> 0.11.6', :require => 'ruby-debug'
 
 group :development, :test do
-  gem 'rspec-rails', '~> 2.11.4'
-  gem 'guard-rspec', '~> 2.1.1'
-  gem 'guard-spork', '~> 1.2.3'
-  gem 'spork',       '~> 0.9.2'
+  gem 'rspec-rails',      '~> 2.11.4'
+  gem 'guard-rspec',      '~> 2.1.1'
+  gem 'guard-spork',      '~> 1.2.3'
+  gem 'spork',            '~> 0.9.2'
+  gem 'database_cleaner', '~> 0.9.1'
 end
 
 group :test do
@@ -156,7 +165,7 @@ Use `@import` directives instead of `Sprocket`'s `require` lines:
 * Add `@import 'bourbon'` at the top
 * Add `@import 'custom'` after that
 
-## Rspec support
+## Rspec support, with DatabaseCleaner
 
 Integrate rspec support for datamapper.
 
@@ -178,6 +187,16 @@ and
 Add at bottom of `RSpec.configure` block
 ```rb
   config.before(:suite) { DataMapper.auto_migrate! }
+
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+  end
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 ```
 
 ## Configure Guard and Spork
