@@ -1,7 +1,7 @@
 A reminder to-do list of getting a rails app running,
 with a bunch of useful tools.
 
-Based on [][http://ryanbigg.com/2010/12/ubuntu-ruby-rvm-rails-and-you/],
+Based on <http://ryanbigg.com/2010/12/ubuntu-ruby-rvm-rails-and-you/>,
 with added customizations
 
 # The list
