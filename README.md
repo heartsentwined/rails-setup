@@ -122,30 +122,6 @@ end
 
 Run `bundle install`.
 
-## Rspec support
-
-Integrate rspec support for datamapper.
-
-```sh
-rails generate rspec:install
-```
-
-In `spec/spec_helper.rb`:
-
-Comment out
-```rb
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
-```
-and
-```rb
-  config.use_transactional_fixtures = true
-```
-
-Add at bottom of `RSpec.configure` block
-```rb
-  config.before(:suite) { DataMapper.auto_migrate! }
-```
-
 ## Ember environment configs
 
 In `config/environments`:
@@ -178,6 +154,30 @@ Use `@import` directives instead of `Sprocket`'s `require` lines:
 * Remove `*= require_tree .`
 * Add `@import 'bourbon'` at the top
 * Add `@import 'custom'` after that
+
+## Rspec support
+
+Integrate rspec support for datamapper.
+
+```sh
+rails generate rspec:install
+```
+
+In `spec/spec_helper.rb`:
+
+Comment out
+```rb
+  config.fixture_path = "#{::Rails.root}/spec/fixtures"
+```
+and
+```rb
+  config.use_transactional_fixtures = true
+```
+
+Add at bottom of `RSpec.configure` block
+```rb
+  config.before(:suite) { DataMapper.auto_migrate! }
+```
 
 ## Start everything
 
