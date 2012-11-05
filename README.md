@@ -199,6 +199,8 @@ Configure RSpec to automatically use Spork. Add this line to `.rspec`:
 Customize the Guardfile, example:
 
 ```rb
+require 'active_support/core_ext'
+
 guard :rspec, all_after_pass: false, cli: '--drb' do
   watch(%r{^spec/.+_spec\.rb$})
   watch(%r{^lib/(.+)\.rb$})     { |m| "spec/lib/#{m[1]}_spec.rb" }
