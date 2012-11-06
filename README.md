@@ -161,10 +161,15 @@ Rename `app/assets/stylesheets/application.css` to `application.css.sass`.
 
 Create `app/assets/stylesheets/custom.css.sass` as a starting point for app's css.
 
+Edit `application.css.sass`.
 Use `@import` directives instead of `Sprocket`'s `require` lines:
 * Remove `*= require_tree .`
-* Add `@import 'bourbon'` at the top
-* Add `@import 'custom'` after that
+* Add at the top:
+```sass
+@import 'bootstrap'
+@import 'bourbon'
+@import 'custom'
+```
 
 ## Rspec
 
@@ -300,6 +305,4 @@ guard
 ## Todo
 
 * Twitter Bootstrap
-* Guard
-* Spork
 * Make an index page, index controller, etc, that loads ember app
