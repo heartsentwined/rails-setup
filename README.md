@@ -99,6 +99,7 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.2'
   gem 'bourbon',      '~> 2.1.2'
   gem 'haml',         '~> 3.1.7'
+  gem 'hamlbars',     '~> 1.1'
   gem 'maruku',       '~> 0.6.1'
   gem 'uglifier',     '~> 1.2.4'
 end
