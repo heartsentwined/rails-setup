@@ -1,10 +1,6 @@
 A reminder to-do list of getting a rails app running,
 with a bunch of useful tools.
 
-Based on <http://ryanbigg.com/2010/12/ubuntu-ruby-rvm-rails-and-you/>,
-[Michael Hartl's tutorial](http://ruby.railstutorial.org/ruby-on-rails-tutorial-book),
-and added customizations.
-
 # The list
 
 ## System dependencies
@@ -22,96 +18,77 @@ libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison \
 subversion phantomjs
 ```
 
-## Ruby Version Manager
+## Ruby Version Manager + Ruby + Rails
 
-Install RVM
 ```sh
-curl -L get.rvm.io | bash -s stable --auto
-```
-and reload Bash profile
-```sh
-. ~/.bash_profile
+\curl -L https://get.rvm.io | bash -s stable --rails
 ```
 
-## Install Ruby
+## Rails composer
+
+* WEBrick
+* Haml
+* RSpec
+* Cucumber
+* Capybara
+* Fabrication
+* Twitter Bootstrap
+* Devise (with Confirmable and Invitable)
+* CanCan with Rolify
+* Simple Form
 
 ```sh
-rvm install 1.9.3 && rvm use 1.9.3
-```
-
-## Setup app gemset
-
-```sh
-rvm gemset create project-name && rvm gemset use project-name
-```
-
-## Install Rails
-
-```sh
-gem install rails
-```
-
-## Datamapper and generate new rails project
-
-Use [dm-rails](https://github.com/datamapper/dm-rails) integration.
-**Warning: possible man-in-the-middle attack!**
-But it's the best bootstrap for now...
-
-```sh
-rails new project_name -m http://datamapper.org/templates/rails.rb
+rails new myapp -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb -T
 ```
 
 ## Add gems
 
 * Client-side / views
     * Ember.js
-    * Twitter Bootstrap
     * SASS
         * Bourbon mixin pack
     * Haml
         * Maruku
     * pagination
 * Testing
-    * RSpec
     * Guard
     * Spork
-    * Capybara
-    * Factory girls
+    * Fabrication
+    * Database Cleaner
+    * Email spec
 * Misc
     * BCrypt
 
-Add to `Gemfile`:
+`Gemfile`:
 
 ```rb
-gem 'bcrypt-ruby',    '~> 3.0.1'
+source 'https://rubygems.org'
+gem 'rails', '3.2.8'
+gem 'sqlite3'
+gem 'jquery-rails'
 
-gem 'jquery-rails',   '~> 2.1.3'
-gem 'ember-rails',    '~> 0.8.0'
+gem 'bcrypt-ruby', '~> 3.0.1'
 
-gem 'will_paginate',  '~> 3.0.3'
-gem 'bootstrap-sass', '~> 2.1.1.0'
+gem 'devise',           '~> 2.1.2'
+gem 'devise_invitable', '~> 1.1.1'
+gem 'cancan',           '~> 1.6.8'
+gem 'rolify',           '~> 3.2.0'
+
+gem 'ember-rails',             '~> 0.8.0'
+gem 'will_paginate',           '~> 3.0.3'
+gem 'bootstrap-sass',          '~> 2.1.1.0'
 gem 'bootstrap-will_paginate', '~> 0.0.9'
+gem 'haml',                    '~> 3.1.7'
+gem 'simple_form',             '~> 2.0.4'
 
-# Gems used only for assets and not required
-# in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.5'
   gem 'coffee-rails', '~> 3.2.2'
   gem 'bourbon',      '~> 2.1.2'
-  gem 'haml',         '~> 3.1.7'
   gem 'hamlbars',     '~> 1.1'
   gem 'maruku',       '~> 0.6.1'
   gem 'uglifier',     '~> 1.2.4'
 end
-
-# Use unicorn as the web server
-# gem 'unicorn', '~> 4.2.1'
-
-# Deploy with Capistrano
-# gem 'capistrano', '~> 2.11.2'
-
-# To use debugger
-# gem 'ruby-debug19', '~> 0.11.6', :require => 'ruby-debug'
 
 group :development, :test do
   gem 'rspec-rails',      '~> 2.11.4'
@@ -120,15 +97,24 @@ group :development, :test do
   gem 'spork',            '~> 0.9.2'
   gem 'database_cleaner', '~> 0.9.1'
   gem 'email_spec',       '~> 1.4.0'
+  gem 'fabrication',      '~> 2.5.0'
+end
+
+group :development do
+  gem 'ruby_parser',  '~> 3.0.1'
+  gem 'haml-rails',   '~> 0.3.5'
+  gem 'hpricot',      '~> 0.8.6'
+  gem 'quiet_assets', '~> 1.0.1'
+  gem 'hub',          '~> 1.10.2',  require: nil
 end
 
 group :test do
-  gem 'capybara',              '~> 1.1.3'
-  gem 'factory_girl_rails',    '~> 4.1.0'
-  gem 'rb-inotify',            '~> 0.8.8'
-  gem 'libnotify',             '~> 0.8.0'
-  # Pretty printed test output
-  gem 'turn',                  '~> 0.9.4', :require => false
+  gem 'cucumber-rails', '~> 1.3.0', require: false
+  gem 'capybara',       '~> 1.1.3'
+  gem 'launchy',        '~> 2.1.2'
+  gem 'rb-inotify',     '~> 0.8.8'
+  gem 'libnotify',      '~> 0.8.0'
+  gem 'turn',           '~> 0.9.4', require: false
 end
 ```
 
@@ -178,26 +164,10 @@ Use `@import` directives instead of `Sprocket`'s `require` lines:
 
 ## Rspec
 
-With:
 * DatabaseCleaner
 * email matchers
 
-Integrate rspec support for datamapper.
-
-```sh
-rails generate rspec:install
-```
-
-In `spec/spec_helper.rb`:
-
-Comment out
-```rb
-  config.fixture_path = "#{::Rails.root}/spec/fixtures"
-```
-and
-```rb
-  config.use_transactional_fixtures = true
-```
+`spec/spec_helper.rb`:
 
 Add to the top require lines:
 ```rb
@@ -310,3 +280,8 @@ guard
 ## Todo
 
 * Make an index page, index controller, etc, that loads ember app
+
+## Acknowledgement
+
+* <http://ryanbigg.com/2010/12/ubuntu-ruby-rvm-rails-and-you/>
+* [Michael Hartl's tutorial](http://ruby.railstutorial.org/ruby-on-rails-tutorial-book)
