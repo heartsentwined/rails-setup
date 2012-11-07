@@ -54,8 +54,6 @@ rails new myapp -m https://raw.github.com/RailsApps/rails-composer/master/compos
     * Guard
     * Spork
     * Fabrication
-    * Database Cleaner
-    * Email spec
 * Misc
     * BCrypt
 
@@ -158,41 +156,9 @@ Use `@import` directives instead of `Sprocket`'s `require` lines:
 * Add at the bottom:
 ```sass
 @import 'bootstrap'
+@import 'bootstrap-responsive'
 @import 'bourbon'
 @import 'custom'
-```
-
-## Rspec
-
-* DatabaseCleaner
-* email matchers
-
-`spec/spec_helper.rb`:
-
-Add to the top require lines:
-```rb
-require 'email_spec'
-```
-
-Add at the top of `RSpec.configure` block:
-```rb
-  config.include EmailSpec::Helpers
-  config.include EmailSpec::Matchers
-```
-
-Add at the bottom of `RSpec.configure` block:
-```rb
-  config.before(:suite) { DataMapper.auto_migrate! }
-
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
-  end
-  config.before(:each) do
-    DatabaseCleaner.start
-  end
-  config.after(:each) do
-    DatabaseCleaner.clean
-  end
 ```
 
 ## Configure Guard and Spork
