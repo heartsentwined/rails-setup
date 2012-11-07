@@ -234,6 +234,10 @@ Remove `test/`. (Otherwise, Spork will attempt to load `Test::Unit`, and fail.)
 
 Change `before (:each) do` to `before do`.
 
+`spec/fabricators/user_fabricator.rb`:
+
+Uncomment `confirmed_at Time.now`.
+
 ## Start everything
 
 Remove `public/index.html`
