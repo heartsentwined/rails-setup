@@ -228,6 +228,12 @@ end
 
 Remove `test/`. (Otherwise, Spork will attempt to load `Test::Unit`, and fail.)
 
+## RSpec default tests bugfix
+
+`spec/controllers/users_controller_spec.rb`:
+
+Change `before (:each) do` to `before do`.
+
 ## Start everything
 
 Remove `public/index.html`
