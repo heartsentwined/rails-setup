@@ -158,6 +158,10 @@ rails generate ember:bootstrap
 
 ## Configure SASS / Bourbon
 
+```sh
+rake bourbon:install
+```
+
 Rename `app/assets/stylesheets/application.css` to `application.css.sass`.
 
 Create `app/assets/stylesheets/custom.css.sass` as a starting point for app's css.
@@ -165,7 +169,7 @@ Create `app/assets/stylesheets/custom.css.sass` as a starting point for app's cs
 Edit `application.css.sass`.
 Use `@import` directives instead of `Sprocket`'s `require` lines:
 * Remove `*= require_tree .`
-* Add at the top:
+* Add at the bottom:
 ```sass
 @import 'bootstrap'
 @import 'bourbon'
@@ -305,5 +309,4 @@ guard
 
 ## Todo
 
-* Twitter Bootstrap
 * Make an index page, index controller, etc, that loads ember app
