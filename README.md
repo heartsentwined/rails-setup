@@ -56,6 +56,7 @@ rails new myapp -m https://raw.github.com/RailsApps/rails-composer/master/compos
     * Fabrication
 * Misc
     * BCrypt
+    * Annotate
 
 `Gemfile`:
 
@@ -103,6 +104,7 @@ group :development do
   gem 'haml-rails',   '~> 0.3.5'
   gem 'hpricot',      '~> 0.8.6'
   gem 'quiet_assets', '~> 1.0.1'
+  gem 'annotate',     '~> 2.5.0'
   gem 'hub',          '~> 1.10.2',  require: nil
 end
 
@@ -237,6 +239,18 @@ Change `before (:each) do` to `before do`.
 `spec/fabricators/user_fabricator.rb`:
 
 Uncomment `confirmed_at Time.now`.
+
+## Speed up BCrypt during test
+
+Add to `config/environments/test.rb`:
+
+```rb
+  # Speed up tests by lowering BCrypt's cost function.
+  require 'bcrypt'
+  silence_warnings do
+    BCrypt::Engine::DEFAULT_COST = BCrypt::Engine::MIN_COST
+  end
+```
 
 ## Start everything
 
