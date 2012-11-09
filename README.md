@@ -56,6 +56,7 @@ rails new myapp -m https://raw.github.com/RailsApps/rails-composer/master/compos
     * Fabrication
 * Misc
     * BCrypt
+    * Faker
     * Annotate
 
 `Gemfile`:
@@ -67,6 +68,7 @@ gem 'sqlite3'
 gem 'jquery-rails'
 
 gem 'bcrypt-ruby', '~> 3.0.1'
+gem 'faker',       '~> 1.1.2'
 
 gem 'devise',           '~> 2.1.2'
 gem 'devise_invitable', '~> 1.1.1'
