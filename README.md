@@ -231,8 +231,6 @@ guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAIL
 end
 ```
 
-Remove `test/`. (Otherwise, Spork will attempt to load `Test::Unit`, and fail.)
-
 ## RSpec default tests bugfix
 
 `spec/controllers/users_controller_spec.rb`:
