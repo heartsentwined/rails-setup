@@ -253,6 +253,14 @@ Add to `config/environments/test.rb`:
   end
 ```
 
+## ActionMailer default URL config
+
+Add to `config/environments/development.rb` and `config/environments/test.rb`:
+
+```rb
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+```
+
 ## Start everything
 
 Start rails server.
