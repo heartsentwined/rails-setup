@@ -268,10 +268,6 @@ Start Guard.
 guard
 ```
 
-## Todo
-
-* Make an index page, index controller, etc, that loads ember app
-
 ## Acknowledgement
 
 * <http://ryanbigg.com/2010/12/ubuntu-ruby-rvm-rails-and-you/>
