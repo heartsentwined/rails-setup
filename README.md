@@ -64,6 +64,7 @@ rails new myapp -m https://raw.github.com/RailsApps/rails-composer/master/compos
 ```rb
 source 'https://rubygems.org'
 gem 'rails', '3.2.8'
+gem 'thin', '~> 1.5.0'
 gem 'sqlite3'
 gem 'jquery-rails'
 
