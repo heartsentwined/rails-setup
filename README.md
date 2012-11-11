@@ -255,8 +255,6 @@ Add to `config/environments/test.rb`:
 
 ## Start everything
 
-Remove `public/index.html`
-
 Start rails server.
 
 ```sh
