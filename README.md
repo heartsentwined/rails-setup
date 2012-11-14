@@ -78,6 +78,7 @@ gem 'meta_search', '~> 1.1.3'
 
 gem 'rest-client', '~> 1.6.7'
 gem 'nokogiri',    '~> 1.5.5'
+gem 'json',        '~> 1.7.5'
 
 gem 'devise',           '~> 2.1.2'
 gem 'devise_invitable', '~> 1.1.1'
