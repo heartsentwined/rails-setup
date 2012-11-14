@@ -270,6 +270,14 @@ Add to `config/environments/development.rb` and `config/environments/test.rb`:
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 ```
 
+## Nokogiri
+
+Create `config/initializers/nokogiri.rb`:
+
+```rb
+require 'nokogiri'
+```
+
 ## Start everything
 
 Start rails server.
