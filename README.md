@@ -50,6 +50,10 @@ rails new myapp -m https://raw.github.com/RailsApps/rails-composer/master/compos
     * Haml
         * Maruku
     * pagination
+* Webservices
+    * REST Client
+    * Nokogiri - HTML Parser
+    * JSON
 * Testing
     * Guard
     * Spork
@@ -58,8 +62,7 @@ rails new myapp -m https://raw.github.com/RailsApps/rails-composer/master/compos
     * BCrypt
     * Faker
     * Annotate
-    * REST Client
-    * Nokogiri - HTML Parser
+    * Paperclip
 
 `Gemfile`:
 
@@ -79,6 +82,7 @@ gem 'meta_search', '~> 1.1.3'
 gem 'rest-client', '~> 1.6.7'
 gem 'nokogiri',    '~> 1.5.5'
 gem 'json',        '~> 1.7.5'
+gem 'paperclip',   '~> 3.3.1'
 
 gem 'devise',           '~> 2.1.2'
 gem 'devise_invitable', '~> 1.1.1'
@@ -276,6 +280,14 @@ Create `config/initializers/nokogiri.rb`:
 
 ```rb
 require 'nokogiri'
+```
+
+## JSON
+
+Create `config/initializers/json.rb`:
+
+```rb
+require 'json'
 ```
 
 ## Start everything
