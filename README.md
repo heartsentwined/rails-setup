@@ -266,6 +266,20 @@ Add to `config/environments/test.rb`:
   end
 ```
 
+## Paperclip RSpec integration
+
+`spec/spec_helper.rb`:
+
+```rb
+# at top
+require 'paperclip/matchers'
+
+# within Spork's prefork block
+RSpec.configure do |config|
+  config.include Paperclip::Shoulda::Matchers
+end
+```
+
 ## ActionMailer default URL config
 
 Add to `config/environments/development.rb` and `config/environments/test.rb`:
