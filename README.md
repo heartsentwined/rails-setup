@@ -72,7 +72,6 @@ gem 'jquery-rails'
 
 gem 'bcrypt-ruby', '~> 3.0.1'
 gem 'faker',       '~> 1.1.2'
-gem 'rest-client', '~> 1.6.7'
 
 gem 'activeadmin', '~> 0.5.0'
 gem 'meta_search', '~> 1.1.3'
