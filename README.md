@@ -126,7 +126,7 @@ end
 
 group :test do
   gem 'cucumber-rails', '~> 1.3.0', require: false
-  gem 'capybara',       '~> 1.1.3'
+  gem 'capybara',       '~> 2.0.0'
   gem 'launchy',        '~> 2.1.2'
   gem 'rb-inotify',     '~> 0.8.8'
   gem 'libnotify',      '~> 0.8.0'
