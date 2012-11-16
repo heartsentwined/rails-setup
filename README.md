@@ -304,6 +304,20 @@ Create `config/initializers/json.rb`:
 require 'json'
 ```
 
+## Active Admin
+
+```
+rails generate active_admin:install
+```
+
+Compatibility with will_paginate - create `config/initializers/kaminari.rb`:
+
+```rb
+Kaminari.configure do |config|
+  config.page_method_name = :per_page_kaminari
+end
+```
+
 ## Start everything
 
 Start rails server.
