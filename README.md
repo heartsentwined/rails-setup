@@ -1,4 +1,5 @@
-# System dependencies
+System dependencies
+===================
 
 * Curl
 * Database drivers
@@ -13,13 +14,15 @@ libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison \
 subversion phantomjs
 ```
 
-# Ruby Version Manager + Ruby + Rails
+Ruby Version Manager + Ruby + Rails
+===================================
 
 ```sh
 \curl -L https://get.rvm.io | bash -s stable --rails
 ```
 
-# New Rails app
+New Rails app
+=============
 
 * with PostgreSQL
 * without Test::Unit tests
@@ -29,21 +32,24 @@ subversion phantomjs
 rails new myapp -d postgresql -T; cd myapp; git init
 ```
 
-# RVM gemset
+RVM gemset
+==========
 
 Create gemset; create project-specific `.rvmrc`; trust it.
 ```sh
 rvm gemset create myapp; rvm rvmrc create ruby-1.9.3@myapp; rvm rvmrc trust .
 ```
 
-# Gems: cherry-picking
+Gems: cherry-picking
+====================
 
-## Server
+Server
+------
 
-* thin
+### thin
 Listens to 3000, like WEBrick; start by `rails s`
 
-* unicorn
+### unicorn
 Listens to 8080; start by `unicorn`
 
 ## Testing
