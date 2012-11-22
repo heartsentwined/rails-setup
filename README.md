@@ -265,7 +265,7 @@ Install gems
 ============
 
 ```sh
-bundle
+bundle update
 ```
 
 ActionMailer default URL config
