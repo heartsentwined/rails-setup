@@ -152,7 +152,7 @@ end
 ```
 
 ### fabrication
-### rspec-validation_expectations
+### rspec_validation_expectations
 ### launchy
 ### faker
 
