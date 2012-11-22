@@ -1,9 +1,4 @@
-A reminder to-do list of getting a rails app running,
-with a bunch of useful tools.
-
-# The list
-
-## System dependencies
+# System dependencies
 
 * Curl
 * Database drivers
@@ -18,185 +13,61 @@ libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison \
 subversion phantomjs
 ```
 
-## Ruby Version Manager + Ruby + Rails
+# Ruby Version Manager + Ruby + Rails
 
 ```sh
 \curl -L https://get.rvm.io | bash -s stable --rails
 ```
 
-## Rails composer
+# New Rails app
 
-* Thin
-* Haml
-* RSpec
-* Cucumber
-* Capybara
-* Fabrication
-* Twitter Bootstrap
-* Devise (with Confirmable and Invitable)
-* CanCan with Rolify
-* Simple Form
+* with PostgreSQL
+* without Test::Unit tests
+* and Git, of course
 
 ```sh
-rails new myapp -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb -T
+rails new myapp -d postgresql -T; cd myapp; git init
 ```
 
-## Add gems
+# RVM gemset
 
-* Client-side / views
-    * Ember.js
-    * SASS
-        * Bourbon mixin pack
-    * Haml
-        * Maruku
-    * pagination
-* Webservices
-    * REST Client
-    * Nokogiri - HTML Parser
-    * JSON
-* Testing
-    * Guard
-    * Spork
-    * Fabrication
-* Misc
-    * BCrypt
-    * Faker
-    * Annotate
-    * Paperclip
-
-`Gemfile`:
-
-```rb
-source 'https://rubygems.org'
-gem 'rails', '3.2.8'
-gem 'thin', '~> 1.5.0'
-gem 'pg'
-gem 'jquery-rails'
-
-gem 'bcrypt-ruby', '~> 3.0.1'
-gem 'faker',       '~> 1.1.2'
-
-gem 'activeadmin', '~> 0.5.0'
-gem 'meta_search', '~> 1.1.3'
-
-gem 'rest-client', '~> 1.6.7'
-gem 'nokogiri',    '~> 1.5.5'
-gem 'json',        '~> 1.7.5'
-gem 'paperclip',   '~> 3.3.1'
-
-gem 'devise',           '~> 2.1.2'
-gem 'devise_invitable', '~> 1.1.1'
-gem 'cancan',           '~> 1.6.8'
-gem 'rolify',           '~> 3.2.0'
-
-gem 'ember-rails',             '~> 0.8.0'
-gem 'will_paginate',           '~> 3.0.3'
-gem 'bootstrap-sass',          '~> 2.1.1.0'
-gem 'bootstrap-will_paginate', '~> 0.0.9'
-gem 'haml',                    '~> 3.1.7'
-gem 'simple_form',             '~> 2.0.4'
-
-group :assets do
-  gem 'sass-rails',   '~> 3.2.5'
-  gem 'coffee-rails', '~> 3.2.2'
-  gem 'bourbon',      '~> 2.1.2'
-  gem 'hamlbars',     '~> 1.1'
-  gem 'maruku',       '~> 0.6.1'
-  gem 'uglifier',     '~> 1.2.4'
-end
-
-group :development, :test do
-  gem 'rspec-rails',      '~> 2.11.4'
-  gem 'guard-rspec',      '~> 2.1.1'
-  gem 'guard-spork',      '~> 1.2.3'
-  gem 'spork',            '~> 0.9.2'
-  gem 'database_cleaner', '~> 0.9.1'
-  gem 'email_spec',       '~> 1.4.0'
-  gem 'fabrication',      '~> 2.5.0'
-end
-
-group :development do
-  gem 'ruby_parser',  '~> 3.0.1'
-  gem 'haml-rails',   '~> 0.3.5'
-  gem 'hpricot',      '~> 0.8.6'
-  gem 'quiet_assets', '~> 1.0.1'
-  gem 'annotate',     '~> 2.5.0'
-  gem 'hub',          '~> 1.10.2',  require: nil
-end
-
-group :test do
-  gem 'cucumber-rails', '~> 1.3.0', require: false
-  gem 'capybara',       '~> 2.0.0'
-  gem 'launchy',        '~> 2.1.2'
-  gem 'rb-inotify',     '~> 0.8.8'
-  gem 'libnotify',      '~> 0.8.0'
-  gem 'turn',           '~> 0.9.4', require: false
-end
-```
-
-Run `bundle install`.
-
-## Ember environment configs
-
-In `config/environments`:
-
-Add to `development.rb` and `test.rb`:
-
-```rb
-  config.ember.variant = :development
-```
-
-And this for `production.rb`:
-
-```rb
-  config.ember.variant = :production
-```
-
-## Ember directory structure bootstrap
-
+Create gemset; create project-specific `.rvmrc`; trust it.
 ```sh
-rails generate ember:bootstrap
+rvm gemset create myapp; rvm rvmrc create ruby-1.9.3@myapp; rvm rvmrc trust .
 ```
 
-## Configure SASS / Bourbon
+# Gems: cherry-picking
 
-```sh
-rake bourbon:install
-```
+## Server
 
-Rename `app/assets/stylesheets/application.css` to `application.css.sass`.
+* thin
+Listens to 3000, like WEBrick; start by `rails s`
 
-Create `app/assets/stylesheets/custom.css.sass` as a starting point for app's css.
+* unicorn
+Listens to 8080; start by `unicorn`
 
-Edit `application.css.sass`.
-Use `@import` directives instead of `Sprocket`'s `require` lines:
-* Remove `*= require_tree .`
-* Add at the bottom:
-```sass
-@import 'bootstrap'
-@import 'bootstrap-responsive'
-@import 'bourbon'
-@import 'custom'
-```
+## Testing
 
-## Configure Guard and Spork
+* rspec-rails
+`rails g rspec:install`
 
-```sh
-guard init rspec
-spork --bootstrap
-guard init spork
-```
+* spork
+`spork --bootstrap`
 
-Edit `spec/spec_helper.rb`.
-Most likely it's just moving everything into the `Spork.prefork` block.
+* guard-rspec
+`guard init rspec`
+
+* guard-spork
+`guard init spork`
+
+Edit `spec/spec_helper.rb`. Most likely it's just moving everything into the `Spork.prefork` block.
 
 Configure RSpec to automatically use Spork. Add this line to `.rspec`:
-```
+```rb
 --drb
 ```
 
-Customize the Guardfile, example:
-
+Customize `Guardfile`. Example:
 ```rb
 require 'active_support/core_ext'
 
@@ -231,7 +102,7 @@ guard :rspec, all_after_pass: false, cli: '--drb' do
   end
 end
 
-guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAILS_ENV' => 'test' } do
+guard 'spork', rspec_env: { 'RAILS_ENV' => 'test' } do
   watch('config/application.rb')
   watch('config/environment.rb')
   watch('config/environments/test.rb')
@@ -239,99 +110,158 @@ guard 'spork', :cucumber_env => { 'RAILS_ENV' => 'test' }, :rspec_env => { 'RAIL
   watch('Gemfile')
   watch('Gemfile.lock')
   watch('spec/spec_helper.rb') { :rspec }
-  watch('test/test_helper.rb') { :test_unit }
-  watch(%r{features/support/}) { :cucumber }
 end
 ```
 
-## RSpec default tests bugfix
+Remove `test/`. (Otherwise, Spork will attempt to load `Test::Unit`, and fail.)
 
-`spec/controllers/users_controller_spec.rb`:
+Start by `guard`.
 
-Change `before (:each) do` to `before do`.
-
-`spec/fabricators/user_fabricator.rb`:
-
-Uncomment `confirmed_at Time.now`.
-
-## Speed up BCrypt during test
-
-Add to `config/environments/test.rb`:
-
+* email_spec
+`spec/spec_helper.rb`:
 ```rb
-  # Speed up tests by lowering BCrypt's cost function.
-  require 'bcrypt'
-  silence_warnings do
-    BCrypt::Engine::DEFAULT_COST = BCrypt::Engine::MIN_COST
-  end
+require "email_spec"
+
+RSpec.configure do |config|
+  config.include EmailSpec::Helpers
+  config.include EmailSpec::Matchers
+end
 ```
 
-## Paperclip RSpec integration
-
+* database_cleaner
 `spec/spec_helper.rb`:
-
 ```rb
-# at top
+RSpec.configure do |config|
+  config.before(:suite) do
+    DatabaseCleaner.strategy = :truncation
+  end
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
+end
+```
+
+* fabrication
+* rspec-validation_expectations
+* launchy
+* faker
+
+(Linux-specific:)
+* rb-inotify
+* libnotify
+
+## Authentication and Authorization
+
+* devise
+* devise_invitable
+* cancan
+* rolify
+
+[todo: bootstrap note on these]
+
+* bcrypt-ruby
+Speed up tests by lowering security - add to `config/environments/test.rb`:
+```rb
+# Speed up tests by lowering BCrypt's cost function.
+require 'bcrypt'
+silence_warnings do
+  BCrypt::Engine::DEFAULT_COST = BCrypt::Engine::MIN_COST
+end
+```
+
+## Models
+
+* annotate
+`annotate` to annotate models; `annotate -r` to annotate `routes.rb`.
+
+* money-rails
+* google_currency
+
+* paperclip
+`spec/spec_helper.rb`:
+```rb
 require 'paperclip/matchers'
 
-# within Spork's prefork block
 RSpec.configure do |config|
   config.include Paperclip::Shoulda::Matchers
 end
 ```
 
-## ActionMailer default URL config
+## Assets and Frontend
 
-Add to `config/environments/development.rb` and `config/environments/test.rb`:
+* ember-rails
+In `config/environments`, add to `development.rb` and `test.rb`:
+```rb
+config.ember.variant = :development
+```
+... and to `production.rb`:
+```rb
+config.ember.variant = :production
+```
+
+Directory structure bootstrap
+```sh
+rails g ember:bootstrap
+```
+
+* bootstrap-sass
+In `app/assets/stylesheets`, rename `application.css` to `application.css.sass`.
+Add to it:
+```sass
+@import 'bootstrap'
+@import 'bootstrap-responsive'
+```
+
+* haml
+* haml-rails
+* hamlbars
+* maruku
+* simple_form
+
+## APIs, external webservices
+
+* rest-client
+
+* nokogiri
+Create `config/initializers/nokogiri.rb`:
+```rb
+require 'nokogiri'
+```
+
+* json
+Create `config/initializers/json.rb`:
+```rb
+require 'json'
+```
+
+## Admin framework
+
+* activeadmin
+`rails g active_admin:install`
+
+## Misc
+
+* quiet_assets
+* hub
+
+# Install gems
+
+```sh
+bundle
+```
+
+# ActionMailer default URL config
+
+In `config/environments/`, add to `development.rb` and `test.rb`:
 
 ```rb
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 ```
 
-## Nokogiri
-
-Create `config/initializers/nokogiri.rb`:
-
-```rb
-require 'nokogiri'
-```
-
-## JSON
-
-Create `config/initializers/json.rb`:
-
-```rb
-require 'json'
-```
-
-## Active Admin
-
-```
-rails generate active_admin:install
-```
-
-Compatibility with will_paginate - create `config/initializers/kaminari.rb`:
-
-```rb
-Kaminari.configure do |config|
-  config.page_method_name = :per_page_kaminari
-end
-```
-
-## Start everything
-
-Start rails server.
-
-```sh
-rails server
-```
-
-Start Guard.
-```sh
-guard
-```
-
-## Acknowledgement
+# Acknowledgement
 
 * <http://ryanbigg.com/2010/12/ubuntu-ruby-rvm-rails-and-you/>
 * [Michael Hartl's tutorial](http://ruby.railstutorial.org/ruby-on-rails-tutorial-book)
