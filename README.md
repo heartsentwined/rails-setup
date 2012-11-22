@@ -232,7 +232,8 @@ Add to it:
 ### maruku
 ### simple_form
 
-## APIs, external webservices
+APIs, external webservices
+--------------------------
 
 ### rest-client
 
@@ -248,23 +249,27 @@ Create `config/initializers/json.rb`:
 require 'json'
 ```
 
-## Admin framework
+Admin framework
+---------------
 
 ### activeadmin
 `rails g active_admin:install`
 
-## Misc
+Misc
+----
 
 ### quiet_assets
 ### hub
 
-# Install gems
+Install gems
+============
 
 ```sh
 bundle
 ```
 
-# ActionMailer default URL config
+ActionMailer default URL config
+===============================
 
 In `config/environments/`, add to `development.rb` and `test.rb`:
 
@@ -272,7 +277,8 @@ In `config/environments/`, add to `development.rb` and `test.rb`:
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 ```
 
-# Acknowledgement
+Acknowledgement
+===============
 
 * <http://ryanbigg.com/2010/12/ubuntu-ruby-rvm-rails-and-you/>
 * [Michael Hartl's tutorial](http://ruby.railstutorial.org/ruby-on-rails-tutorial-book)
