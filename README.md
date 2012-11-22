@@ -277,6 +277,13 @@ In `config/environments/`, add to `development.rb` and `test.rb`:
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 ```
 
+Create DBs
+==========
+
+```sh
+rake db:create:all
+```
+
 Acknowledgement
 ===============
 
