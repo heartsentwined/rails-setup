@@ -52,18 +52,19 @@ Listens to 3000, like WEBrick; start by `rails s`
 ### unicorn
 Listens to 8080; start by `unicorn`
 
-## Testing
+Testing
+-------
 
-* rspec-rails
+### rspec-rails
 `rails g rspec:install`
 
-* spork
+### spork
 `spork --bootstrap`
 
-* guard-rspec
+### guard-rspec
 `guard init rspec`
 
-* guard-spork
+### guard-spork
 `guard init spork`
 
 Edit `spec/spec_helper.rb`. Most likely it's just moving everything into the `Spork.prefork` block.
@@ -123,7 +124,7 @@ Remove `test/`. (Otherwise, Spork will attempt to load `Test::Unit`, and fail.)
 
 Start by `guard`.
 
-* email_spec
+### email_spec
 `spec/spec_helper.rb`:
 ```rb
 require "email_spec"
@@ -134,7 +135,7 @@ RSpec.configure do |config|
 end
 ```
 
-* database_cleaner
+### database_cleaner
 `spec/spec_helper.rb`:
 ```rb
 RSpec.configure do |config|
@@ -150,25 +151,27 @@ RSpec.configure do |config|
 end
 ```
 
-* fabrication
-* rspec-validation_expectations
-* launchy
-* faker
+### fabrication
+### rspec-validation_expectations
+### launchy
+### faker
 
-(Linux-specific:)
-* rb-inotify
-* libnotify
+### rb-inotify
+(linux-specific)
+### libnotify
+(linux-specific)
 
-## Authentication and Authorization
+Authentication and Authorization
+--------------------------------
 
-* devise
-* devise_invitable
-* cancan
-* rolify
+### devise
+### devise_invitable
+### cancan
+### rolify
 
 [todo: bootstrap note on these]
 
-* bcrypt-ruby
+### bcrypt-ruby
 Speed up tests by lowering security - add to `config/environments/test.rb`:
 ```rb
 # Speed up tests by lowering BCrypt's cost function.
@@ -178,15 +181,16 @@ silence_warnings do
 end
 ```
 
-## Models
+Models
+------
 
-* annotate
+### annotate
 `annotate` to annotate models; `annotate -r` to annotate `routes.rb`.
 
-* money-rails
-* google_currency
+### money-rails
+### google_currency
 
-* paperclip
+### paperclip
 `spec/spec_helper.rb`:
 ```rb
 require 'paperclip/matchers'
@@ -196,9 +200,10 @@ RSpec.configure do |config|
 end
 ```
 
-## Assets and Frontend
+Assets and Frontend
+-------------------
 
-* ember-rails
+### ember-rails
 In `config/environments`, add to `development.rb` and `test.rb`:
 ```rb
 config.ember.variant = :development
@@ -213,7 +218,7 @@ Directory structure bootstrap
 rails g ember:bootstrap
 ```
 
-* bootstrap-sass
+### bootstrap-sass
 In `app/assets/stylesheets`, rename `application.css` to `application.css.sass`.
 Add to it:
 ```sass
@@ -221,23 +226,23 @@ Add to it:
 @import 'bootstrap-responsive'
 ```
 
-* haml
-* haml-rails
-* hamlbars
-* maruku
-* simple_form
+### haml
+### haml-rails
+### hamlbars
+### maruku
+### simple_form
 
 ## APIs, external webservices
 
-* rest-client
+### rest-client
 
-* nokogiri
+### nokogiri
 Create `config/initializers/nokogiri.rb`:
 ```rb
 require 'nokogiri'
 ```
 
-* json
+### json
 Create `config/initializers/json.rb`:
 ```rb
 require 'json'
@@ -245,13 +250,13 @@ require 'json'
 
 ## Admin framework
 
-* activeadmin
+### activeadmin
 `rails g active_admin:install`
 
 ## Misc
 
-* quiet_assets
-* hub
+### quiet_assets
+### hub
 
 # Install gems
 
