@@ -124,6 +124,8 @@ Remove `test/`. (Otherwise, Spork will attempt to load `Test::Unit`, and fail.)
 
 Start by `guard`.
 
+### shoulda
+
 ### email_spec
 `spec/spec_helper.rb`:
 ```rb
