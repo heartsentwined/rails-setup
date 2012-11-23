@@ -194,7 +194,16 @@ Models
 `annotate` to annotate models; `annotate -r` to annotate `routes.rb`.
 
 ### money-rails
+`rails g money_rails:initializer`
+Open `config/initializers/money.rb` and do the configs.
 ### google_currency
+Manually add `json` gem as dependency.
+Use as currency bank - add to `config/initializers/money.rb`:
+```rb
+MultiJson.engine = :json_gem
+require 'money/bank/google_currency'
+Money.default_bank = Money::Bank::GoogleCurrency.new
+```
 
 ### paperclip
 `spec/spec_helper.rb`:
