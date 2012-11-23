@@ -58,6 +58,11 @@ Testing
 ### rspec-rails
 `rails g rspec:install`
 
+Configure RSpec to use the documentation format. Add this line to `.rspec`;
+```rb
+--format documentation
+```
+
 ### spork
 `spork --bootstrap`
 
