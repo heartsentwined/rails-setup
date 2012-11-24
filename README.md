@@ -190,6 +190,16 @@ end
 Models
 ------
 
+### paperclip
+`spec/spec_helper.rb`:
+```rb
+require 'paperclip/matchers'
+
+RSpec.configure do |config|
+  config.include Paperclip::Shoulda::Matchers
+end
+```
+
 ### annotate
 `annotate` to annotate models; `annotate -r` to annotate `routes.rb`.
 
@@ -205,15 +215,7 @@ require 'money/bank/google_currency'
 Money.default_bank = Money::Bank::GoogleCurrency.new
 ```
 
-### paperclip
-`spec/spec_helper.rb`:
-```rb
-require 'paperclip/matchers'
-
-RSpec.configure do |config|
-  config.include Paperclip::Shoulda::Matchers
-end
-```
+### ruby-units
 
 Assets and Frontend
 -------------------
