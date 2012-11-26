@@ -272,8 +272,18 @@ Admin framework
 ### activeadmin
 `rails g active_admin:install`
 
+PDF
+---
+
+### prawn
+
 Misc
 ----
+
+### delayed_job_active_record
+`rails g delayed_job:active_record; rake db:migrate`
+Depends on `daemons`. Run by `script/delayed_job start`.
+### daemons
 
 ### quiet_assets
 ### hub
