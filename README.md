@@ -134,7 +134,7 @@ Start by `guard`.
 ### email_spec
 `spec/spec_helper.rb`:
 ```rb
-require "email_spec"
+require 'email_spec'
 
 RSpec.configure do |config|
   config.include EmailSpec::Helpers
