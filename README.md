@@ -252,6 +252,12 @@ Add to it:
 APIs, external webservices
 --------------------------
 
+### active_model_serializers
+Generate a serializer:
+```sh
+rails g serializer model_name
+```
+
 ### rest-client
 
 ### nokogiri
