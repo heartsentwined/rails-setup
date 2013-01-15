@@ -40,6 +40,13 @@ Create gemset; create project-specific `.rvmrc`; trust it.
 rvm gemset create myapp; rvm rvmrc create ruby-1.9.3@myapp; rvm rvmrc trust .
 ```
 
+Create DBs
+==========
+
+```sh
+rake db:create:all
+```
+
 Gems: cherry-picking
 ====================
 
@@ -171,6 +178,15 @@ Authentication and Authorization
 --------------------------------
 
 ### devise
+Bootstrap:
+```sh
+rails g devise:install
+```
+Then review `config/initializers/devise.rb` and the generated migration file.
+Use Devise on existing model:
+```sh
+rails g devise model_name
+```
 ### devise_invitable
 ### cancan
 ### rolify
@@ -308,13 +324,6 @@ In `config/environments/`, add to `development.rb` and `test.rb`:
 
 ```rb
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
-```
-
-Create DBs
-==========
-
-```sh
-rake db:create:all
 ```
 
 Acknowledgement
