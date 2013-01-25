@@ -261,6 +261,7 @@ Add to it:
 
 ### haml
 ### haml-rails
+### haml-contrib
 ### hamlbars
 ### maruku
 ### simple_form
@@ -292,7 +293,13 @@ Admin framework
 ---------------
 
 ### activeadmin
-`rails g active_admin:install`
+```sh
+rails g active_admin:install
+```
+Generate admin page for a model:
+```sh
+rails g active_admin:resource [model]
+```
 
 PDF
 ---
