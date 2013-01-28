@@ -197,11 +197,11 @@ Review the generated migration file.
 ### bcrypt-ruby
 Speed up tests by lowering security - add to `config/environments/test.rb`:
 ```rb
-# Speed up tests by lowering BCrypt's cost function.
-require 'bcrypt'
-silence_warnings do
-  BCrypt::Engine::DEFAULT_COST = BCrypt::Engine::MIN_COST
-end
+  # Speed up tests by lowering BCrypt's cost function.
+  require 'bcrypt'
+  silence_warnings do
+    BCrypt::Engine::DEFAULT_COST = BCrypt::Engine::MIN_COST
+  end
 ```
 
 Models
