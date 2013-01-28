@@ -182,11 +182,12 @@ Bootstrap:
 ```sh
 rails g devise:install
 ```
-Then review `config/initializers/devise.rb` and the generated migration file.
+Review `config/initializers/devise.rb`.
 Use Devise on existing model:
 ```sh
 rails g devise model_name
 ```
+Review the generated migration file.
 ### devise_invitable
 ### cancan
 ### rolify
