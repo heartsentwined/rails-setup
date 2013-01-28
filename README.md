@@ -334,6 +334,117 @@ In `config/environments/`, add to `development.rb` and `test.rb`:
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 ```
 
+Heroku
+======
+
+Make sure there is at least one git commit:
+```sh
+git add -A; git commit -m 'init'
+```
+
+Login - interactive
+```sh
+heroku login
+```
+
+Create and push
+```sh
+heroku create && git push heroku master
+```
+
+Rename
+------
+```sh
+heroku apps:rename newname
+```
+
+Custom domain
+-------------
+
+Point `example.com` to myherokuapp.herokuapp.com by adding a DNS record:
+* Name: example.com
+* TTL: (use DNS service provider's default)
+* Class: IN
+* Type: CNAME
+* Record: myherokuapp.herokuapp.com
+
+Add domain to heroku app:
+```sh
+heroku domains:add example.com
+```
+
+Repeat for `*.example.com`.
+
+Unicorn
+-------
+
+Add `unicorn` gem.
+
+Create `Procfile`:
+```
+web: bundle exec unicorn -p $PORT -c ./config/unicorn.rb
+```
+
+Create `config/unicorn.rb`:
+```rb
+worker_processes 3
+timeout 30
+preload_app true
+
+before_fork do |server, worker|
+  if defined?(ActiveRecord::Base)
+    ActiveRecord::Base.connection.disconnect!
+    Rails.logger.info 'Disconnected from ActiveRecord'
+  end
+
+  sleep 1
+end
+
+after_fork do |server, worker|
+  if defined?(ActiveRecord::Base)
+    ActiveRecord::Base.establish_connection
+    Rails.logger.info 'Connected to ActiveRecord'
+  end
+end
+```
+
+Modify `config/application.rb`:
+```rb
+    # heroku unicorn logging fix
+    config.logger = Logger.new(STDOUT)
+```
+
+Addon: newrelic
+---------------
+
+Provides useful monitoring stats.
+
+```sh
+heroku addons:add newrelic:standard
+```
+
+Add the `newrelic_rpm` gem, and `bundle update`.
+
+Download a template config file: (no need to touch settings)
+```sh
+curl https://raw.github.com/gist/2253296/newrelic.yml > config/newrelic.yml
+```
+
+Specify app environment
+```sh
+heroku config:add RACK_ENV=production
+```
+
+Commit and push. Keys in config file will be updated automatically.
+
+Asset pipeline fix
+------------------
+Add to `config/application.rb`:
+```rb
+    # heroku asset precompilation fix
+    config.assets.initialize_on_precompile = false
+```
+
 Acknowledgement
 ===============
 
