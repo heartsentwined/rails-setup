@@ -70,6 +70,8 @@ Configure RSpec to use the documentation format. Add this line to `.rspec`;
 --format documentation
 ```
 
+### jasminerice
+
 ### spork
 `spork --bootstrap`
 
@@ -78,6 +80,9 @@ Configure RSpec to use the documentation format. Add this line to `.rspec`;
 
 ### guard-spork
 `guard init spork`
+
+### guard-jasmine
+`guard init jasmine`
 
 Edit `spec/spec_helper.rb`. Most likely it's just moving everything into the `Spork.prefork` block.
 
@@ -129,6 +134,14 @@ guard 'spork', rspec_env: { 'RAILS_ENV' => 'test' } do
   watch('Gemfile')
   watch('Gemfile.lock')
   watch('spec/spec_helper.rb') { :rspec }
+end
+
+guard :jasmine do
+  watch(%r{spec/javascripts/spec\.(js\.coffee|js|coffee)$}) { 'spec/javascripts' }
+  watch(%r{spec/javascripts/.+_spec\.(js\.coffee|js|coffee)$})
+  watch(%r{app/assets/javascripts/(.+?)\.(js\.coffee|js|coffee)(?:\.\w+)*$}) do |m|
+    "spec/javascripts/#{m[1]}_spec.#{m[2]}"
+  end
 end
 ```
 
