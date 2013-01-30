@@ -272,6 +272,14 @@ Add to it:
 @import 'bootstrap'
 @import 'bootstrap-responsive'
 ```
+### bourbon
+In `app/assets/stylesheets`, rename `application.css` to `application.css.sass`.
+Add to it:
+```sass
+@import 'bourbon'
+```
+Remove all sprocket directives; files must be imported manually.
+
 
 ### haml
 ### haml-rails
