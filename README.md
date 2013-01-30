@@ -272,6 +272,12 @@ Add to it:
 @import 'bootstrap'
 @import 'bootstrap-responsive'
 ```
+
+Add to `app/assets/javascripts/application.js`:
+```js
+//= require bootstrap
+```
+
 ### bourbon
 In `app/assets/stylesheets`, rename `application.css` to `application.css.sass`.
 Add to it:
@@ -281,7 +287,7 @@ Add to it:
 Remove all sprocket directives; files must be imported manually.
 
 ### underscore-rails
-In `app/assets/javascripts/application.js`:
+Add to `app/assets/javascripts/application.js`:
 ```js
 //= require underscore
 ```
