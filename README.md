@@ -280,6 +280,11 @@ Add to it:
 ```
 Remove all sprocket directives; files must be imported manually.
 
+### underscore-rails
+In `app/assets/javascripts/application.js`:
+```js
+//= require underscore
+```
 
 ### haml
 ### haml-rails
