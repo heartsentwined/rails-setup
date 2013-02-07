@@ -286,6 +286,8 @@ Add to it:
 ```
 Remove all sprocket directives; files must be imported manually.
 
+### color-schemer
+
 ### underscore-rails
 Add to `app/assets/javascripts/application.js`:
 ```js
