@@ -37,7 +37,7 @@ RVM gemset
 
 Create gemset; create project-specific `.rvmrc`; trust it.
 ```sh
-rvm gemset create myapp; rvm rvmrc create ruby-1.9.3@myapp; rvm rvmrc trust .
+rvm rvmrc create ruby-1.9.3@myapp; rvm gemset use myapp; rvm rvmrc trust .
 ```
 
 Create DBs
