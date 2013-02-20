@@ -473,6 +473,7 @@ Commit and push. Keys in config file will be updated automatically.
 
 Asset pipeline fix
 ------------------
+
 Add to `config/application.rb`:
 ```rb
     # heroku asset precompilation fix
