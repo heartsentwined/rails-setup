@@ -310,6 +310,8 @@ Generate a serializer:
 rails g serializer model_name
 ```
 
+### inherited_resources
+
 ### rest-client
 
 ### nokogiri
