@@ -14,6 +14,29 @@ libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev automake libtool bison \
 subversion phantomjs
 ```
 
+Postgresql
+----------
+
+```sh
+sudo apt-get install postgresql postgresql-client
+```
+
+Edit `/etc/postgresql/*/main/pg_hba.conf`, modify the line
+```
+# "local" is for Unix domain socket connections only
+local   all             all                                     peer
+```
+to
+```
+# "local" is for Unix domain socket connections only
+local   all             all                                     trust
+```
+in order to enable no-password login.
+
+```sh
+sudo service postgresql restart
+```
+
 Ruby Version Manager + Ruby + Rails
 ===================================
 
