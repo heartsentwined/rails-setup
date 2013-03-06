@@ -288,6 +288,8 @@ Directory structure bootstrap
 rails g ember:bootstrap
 ```
 
+### ember-auth
+
 ### compass-rails
 Create `config/compass.rb`:
 ```rb
