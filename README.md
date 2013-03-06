@@ -288,6 +288,37 @@ Directory structure bootstrap
 rails g ember:bootstrap
 ```
 
+### compass-rails
+Create `config/compass.rb`:
+```rb
+project_type = :rails
+```
+
+When needed, import compass in a stylesheet:
+```sass
+@import compass
+```
+
+Optional: register a new `fonts` directory into asset pipeline.
+Create the directory `app/assets/fonts`.
+
+Add to `config.application.rb`:
+```rb
+    # add fonts to asset path
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+```
+
+### zurb-foundation
+Starter files and layout template:
+```sh
+rails g foundation:install
+```
+
+Add to `config/compass.rb`:
+```rb
+require 'zurb-foundation'
+```
+
 ### bootstrap-sass
 In `app/assets/stylesheets`, rename `application.css` to `application.css.sass`.
 Add to it:
