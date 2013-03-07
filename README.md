@@ -289,6 +289,7 @@ rails g ember:bootstrap
 ```
 
 ### ember-auth
+### emblem-rails
 
 ### compass-rails
 Create `config/compass.rb`:
@@ -355,6 +356,10 @@ Add to `app/assets/javascripts/application.js`:
 ### haml-contrib
 ### hamlbars
 ### maruku
+
+### slim
+### slim-rails
+
 ### simple_form
 
 APIs, external webservices
