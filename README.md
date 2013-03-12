@@ -224,6 +224,7 @@ Use Devise on existing model:
 rails g devise model_name
 ```
 Review the generated migration file.
+
 ### devise_invitable
 ### cancan
 ### rolify
