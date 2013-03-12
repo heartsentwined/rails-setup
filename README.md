@@ -543,6 +543,30 @@ Add to `config/application.rb`:
     config.assets.initialize_on_precompile = false
 ```
 
+Gem dependency update
+=====================
+
+### gemnasium
+
+Install `gemnasium` gem.
+
+Bootstrap with hook on `git push`.
+```sh
+gemnasium install --git
+```
+
+Edit `config/gemnasium.yml`.
+
+Register new project on gemnasium.
+```sh
+gemnasium create
+```
+
+Sample icon for `README.md`.
+```md
+[![Dependency Status](https://gemnasium.com/heartsentwined/repo-name.png)](https://gemnasium.com/heartsentwined/repo-name)
+```
+
 Acknowledgement
 ===============
 
