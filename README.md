@@ -140,7 +140,6 @@ guard :rspec, all_after_pass: false, cli: '--drb' do
   end
 
   watch(%r{^spec/support/(.+)\.rb$})                 { 'spec' }
-  watch('config/routes.rb')                          { 'spec/routing' }
   watch('app/controllers/application_controller.rb') { 'spec/controllers' }
 
   # Capybara
@@ -157,6 +156,7 @@ guard 'spork', rspec_env: { 'RAILS_ENV' => 'test' } do
   watch('Gemfile')
   watch('Gemfile.lock')
   watch('spec/spec_helper.rb') { :rspec }
+  watch('config/routes.rb')
 end
 
 guard :jasmine do
@@ -277,11 +277,11 @@ Assets and Frontend
 ### ember-rails
 In `config/environments`, add to `development.rb` and `test.rb`:
 ```rb
-config.ember.variant = :development
+  config.ember.variant = :development
 ```
 ... and to `production.rb`:
 ```rb
-config.ember.variant = :production
+  config.ember.variant = :production
 ```
 
 Directory structure bootstrap
