@@ -93,8 +93,6 @@ Configure RSpec to use the documentation format. Add this line to `.rspec`;
 --format documentation
 ```
 
-### jasminerice
-
 ### spork
 `spork --bootstrap`
 
@@ -103,9 +101,6 @@ Configure RSpec to use the documentation format. Add this line to `.rspec`;
 
 ### guard-spork
 `guard init spork`
-
-### guard-jasmine
-`guard init jasmine`
 
 Edit `spec/spec_helper.rb`. Most likely it's just moving everything into the `Spork.prefork` block.
 
@@ -157,8 +152,20 @@ guard 'spork', rspec_env: { 'RAILS_ENV' => 'test' } do
   watch('Gemfile.lock')
   watch('spec/spec_helper.rb') { :rspec }
   watch('config/routes.rb')
-end
+END
+```
 
+Remove `test/`. (Otherwise, Spork will attempt to load `Test::Unit`, and fail.)
+
+Start by `guard`.
+
+### jasminerice
+
+### guard-jasmine
+`guard init jasmine`
+
+Add to `Guardfile`:
+```rb
 guard :jasmine do
   watch(%r{spec/javascripts/spec\.(js\.coffee|js|coffee)$}) { 'spec/javascripts' }
   watch(%r{spec/javascripts/.+_spec\.(js\.coffee|js|coffee)$})
@@ -168,9 +175,26 @@ guard :jasmine do
 end
 ```
 
-Remove `test/`. (Otherwise, Spork will attempt to load `Test::Unit`, and fail.)
+### parallel_tests
 
-Start by `guard`.
+Modify `config/database.yml`:
+```yml
+test:
+  database: myapp_test<%= ENV['TEST_ENV_NUMBER'] %>
+```
+
+Create DBs.
+`rake parallel:create`
+
+Prepare test DBs - repeat after migration.
+`rake parallel:prepare`
+
+Modify `Guardfile`:
+```rb
+guard :rspec, parallel: true, all_after_pass: false, cli: '--drb' do
+  # ...
+end
+```
 
 ### shoulda
 
