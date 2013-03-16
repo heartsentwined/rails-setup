@@ -544,6 +544,24 @@ Add to `config/application.rb`:
     config.assets.initialize_on_precompile = false
 ```
 
+Serve gzipped static assets
+---------------------------
+
+Use the gem `heroku-deflater`.
+`Gemfile`:
+```rb
+group :production do
+  gem 'heroku-deflater'
+end
+```
+
+Heroku's new cedar stack no longer serves static assets through nginx.
+Enable rails' static assets server.
+`config/environments/production.rb`:
+```rb
+  config.serve_static_assets = true
+```
+
 Gem dependency update
 =====================
 
