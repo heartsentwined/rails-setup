@@ -213,9 +213,6 @@ end
 `spec/spec_helper.rb`:
 ```rb
 RSpec.configure do |config|
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-  end
   config.before(:each) do
     DatabaseCleaner.start
   end
