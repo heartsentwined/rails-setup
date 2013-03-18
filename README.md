@@ -210,12 +210,11 @@ end
 ```
 
 ### database_cleaner
-**Caution: slow**
 `spec/spec_helper.rb`:
 ```rb
 RSpec.configure do |config|
   config.before(:suite) do
-    DatabaseCleaner.strategy = :truncation
+    DatabaseCleaner.strategy = :transaction
   end
   config.before(:each) do
     DatabaseCleaner.start
