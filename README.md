@@ -210,6 +210,7 @@ end
 ```
 
 ### database_cleaner
+**Caution: slow**
 `spec/spec_helper.rb`:
 ```rb
 RSpec.configure do |config|
