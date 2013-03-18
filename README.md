@@ -298,8 +298,6 @@ Money.default_bank = Money::Bank::GoogleCurrency.new
 Assets and Frontend
 -------------------
 
-### underscore-rails
-
 ### ember-rails
 In `config/environments`, add to `development.rb` and `test.rb`:
 ```rb
