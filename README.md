@@ -275,6 +275,8 @@ RSpec.configure do |config|
 end
 ```
 
+### squeel
+
 ### annotate
 `annotate` to annotate models; `annotate -r` to annotate `routes.rb`.
 
@@ -343,6 +345,8 @@ Add to `config/compass.rb`:
 ```rb
 require 'zurb-foundation'
 ```
+
+### foundation-icons-sass-rails
 
 ### bootstrap-sass
 In `app/assets/stylesheets`, rename `application.css` to `application.css.sass`.
