@@ -312,7 +312,7 @@ Directory structure bootstrap
 rails g ember:bootstrap
 ```
 
-### ember-auth
+### ember-auth-rails
 ### emblem-rails
 
 ### compass-rails
