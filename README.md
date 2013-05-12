@@ -1,4 +1,4 @@
-System dependencies
+System dependencies # for some reason specifying will cause dep loos#
 ===================
 
 * Curl
@@ -60,7 +60,7 @@ RVM gemset
 
 Create gemset; create project-specific `.rvmrc`; trust it.
 ```sh
-rvm --rvmrc --create 1.9.3@myapp; rvm gemset use myapp; rvm rvmrc trust .
+rvm use --rvmrc --create 1.9.3@myapp; rvm rvmrc trust .
 ```
 
 Create DBs
@@ -152,7 +152,7 @@ guard 'spork', rspec_env: { 'RAILS_ENV' => 'test' } do
   watch('Gemfile.lock')
   watch('spec/spec_helper.rb') { :rspec }
   watch('config/routes.rb')
-END
+end
 ```
 
 Remove `test/`. (Otherwise, Spork will attempt to load `Test::Unit`, and fail.)
